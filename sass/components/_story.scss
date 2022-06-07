@@ -1,0 +1,78 @@
+.story {
+  width: 75%;
+  margin: 0 auto;
+  font-size: $default-font-size;
+  padding: 6rem;
+  padding-left: 9rem;
+  border-radius: 3px;
+  opacity: 0.95;
+  background-color: rgba($color-white, 0.6);
+  box-shadow: 0 3rem 6rem rgba($color-black, 0.1);
+  transform: skewX(-12deg);
+
+  @include respond(tab-port) {
+    width: 100%;
+    padding: 4rem;
+    padding-left: 7rem;
+  }
+  @include respond(phone) {
+    transform: skewX(0);
+  }
+  &__shape {
+    float: left;
+    width: 15rem;
+    height: 15rem;
+    overflow: hidden;
+
+    @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+      clip-path: circle(50% at 50% 50%);
+      -webkit-clip-path: circle(50% at 50% 50%);
+      width: 15rem;
+      height: 15rem;
+      shape-outside: circle(50% at 50% 50%);
+      -webkit-shape-outside: circle(50% at 50% 50%);
+      border-radius: none;
+    }
+
+    transform: translateX(-3rem) skewX(12deg);
+    position: relative;
+    transition: all 0.5s;
+    @include respond(phone) {
+      transform: translateX(-3rem) skewX(0);
+    }
+  }
+  &__img {
+    height: 100%;
+    backface-visibility: hidden;
+    transform: scale(1.4);
+  }
+  &__text {
+    transform: skewX(12deg);
+    @include respond(phone) {
+      transform: skewX(0);
+    }
+    letter-spacing: 0.5px;
+    word-spacing: 0.3rem;
+  }
+  &__caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 20%);
+    color: $color-white;
+    text-transform: uppercase;
+    font-weight: 600;
+    opacity: 0;
+    text-align: center;
+    backface-visibility: hidden;
+  }
+  &:hover &__caption {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+  }
+  &:hover &__img {
+    transform: scale(1);
+    transition: all 0.5s;
+    filter: blur(3px) brightness(80%);
+  }
+}
