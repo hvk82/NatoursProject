@@ -1,0 +1,88 @@
+.popup {
+  height: 100vh;
+  width: 100%;
+  background-color: rgba($color-black, 0.8);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+
+  @supports (backdrop-filter: blur(10px)) or
+    (-webkit-backdrop-filter: blur(10px)) {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    background-color: rgba($color-black, 0.3);
+  }
+
+  &__content {
+    display: table;
+
+    @include absCenter;
+    width: 75%;
+    opacity: 0;
+    transform: scale(0.5) translate(-50%, -50%);
+    transition: all 0.4s 0.2s;
+    height: 50rem;
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.8);
+    background-color: $color-white;
+    border-radius: 3px;
+  }
+  &__left {
+    width: 33.333333%;
+    display: table-cell;
+  }
+  &__right {
+    width: 66.6666667%;
+    display: table-cell;
+    padding: 3rem 5rem;
+    vertical-align: middle;
+  }
+  &__img {
+    width: 100%;
+    display: block;
+  }
+  &__text {
+    font-size: 1.4rem;
+    margin-bottom: 4rem;
+    columns: 2;
+    column-gap: 3rem;
+    column-rule: 1px solid $color-grey-light-2;
+    //for mozilla firefox
+    -moz-columns: 2;
+    -moz-column-gap: 3rem;
+    -moz-column-rule: 1px solid $color-grey-light-2;
+    //for hyphen
+    hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    -webkit-hyphens: auto;
+  }
+  &:target {
+    opacity: 1;
+    visibility: visible;
+  }
+  &__close {
+    &:link,
+    &:visited {
+      text-decoration: none;
+      position: absolute;
+      top: 2.5rem;
+      right: 2.5rem;
+      display: inline-block;
+      font-size: 3rem;
+      color: $color-grey-dark-2;
+      line-height: 1;
+    }
+    &:hover {
+      color: $color-primary;
+    }
+  }
+  &:target &__content {
+    opacity: 1;
+    // visibility: visible;
+    transform: scale(1) translate(-50%, -50%);
+  }
+}

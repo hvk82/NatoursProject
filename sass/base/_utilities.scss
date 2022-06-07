@@ -1,0 +1,37 @@
+.u-center-text {
+  text-align: center !important;
+}
+.u-margin-bottom-big {
+  margin-bottom: 8rem !important;
+  @include respond(tab-port) {
+    margin-bottom: 6rem !important;
+  }
+}
+.u-margin-bottom-medium {
+  margin-bottom: 4rem !important;
+  @include respond(tab-port) {
+    margin-bottom: 2rem !important;
+  }
+}
+// .col-1-of-2 {
+//   // float: left;
+// }
+.u-margin-bottom-small {
+  margin-bottom: 1.5rem !important;
+}
+.u-margin-top-big {
+  margin-bottom: 8rem !important;
+}
+.u-margin-top-huge {
+  margin-bottom: 10rem !important;
+}
+.index-priority {
+  z-index: 999;
+  position: absolute !important;
+}
+.index-priority--1 {
+  z-index: 9991;
+  position: absolute !important;
+  top: 3rem;
+  left: 35%;
+}
